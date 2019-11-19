@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block title %}Member Card{% endblock %}
+{% block body %}
+    <h1>{{ member.name }}</h1>
+    <p>{{ member.level }}</p>
+    <hr>
+    <a href="{{ path('/members') }}">back</a>
+{% endblock %}

@@ -2,23 +2,32 @@
 {% block title %}Members{% endblock %}
 {% block body %}
 <div class="wrapper container">
-    <table class="table">
+    <table id="members" class="table">
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col"></th>
+            <th scope="col">name</th>
+            <th scope="col">level</th>
+            <th scope="col">view</th>
+            <th scope="col">view</th>
+            <th scope="col">delete</th>
         </tr>
         </thead>
         <tbody>
+        {% for member in members %}
         <tr>
-            <th scope="row"></th>
-            <td></td>
+            <th scope="row">{{ member.id }}</th>
+            <td>{{ member.name}}</td>
+            <td>{{ member.level }}</td>
+            <td><a class="badge badge-pill badge-dark" href="/member/{{ member.id }}">view member card</a></td>
+            <td><a class="badge badge-pill badge-secondary" href="/member/update/{{ member.id }}">update member data</a></td>
+            <td><a class="badge badge-pill badge-danger delete-article" data-id="{{ member.id }}" href="#">delete member</a></td>
         </tr>
-        <tr>
-            <th scope="row"></th>
-            <td></td>
-        </tr>
+        {% endfor %}
         </tbody>
     </table>
 </div>
 {% endblock %}
+{% block javascripts %}
+<script src="{{ asset('js/main.js')}}"></script>
+{% endblock%}
